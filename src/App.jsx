@@ -124,7 +124,7 @@ function App() {
 
   return (
     <div
-      className={` flex items-center justify-center bg-cover bg-center transition duration-500 ${
+      className={`  flex items-center justify-center bg-cover bg-center transition duration-500 ${
         darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
       }`}
       style={{
@@ -162,41 +162,40 @@ function App() {
               vue weather
             </h1>
           </div>
-
-          <div className="flex flex-col mb-10 md:flex-row items-center justify-center gap-6">
-            <div className="text-center">
+          <div className="flex flex-col mb-10 md:flex-row items-center justify-center gap-6 w-full">
+            <div className="text-center w-full md:w-[400px]">
               {loading ? (
                 <p className="text-[30px]">Loading...</p>
               ) : error ? (
                 <p className="text-red-500">{error}</p>
               ) : weatherData.length > 0 ? (
                 <div
-                  className={`bg-white bg-opacity-55 backdrop-blur-md w-[400px] h-[300px] rounded-lg shadow-md 
-                  ${
-                    darkMode
-                      ? "bg-black bg-opacity-80"
-                      : "bg-white bg-opacity-55"
-                  }`}
+                  className={` bg-opacity-55 backdrop-blur-md w-full md:w-[400px] h-[300px] rounded-lg shadow-md 
+                      ${
+                        darkMode
+                          ? "bg-black bg-opacity-80"
+                          : "bg-white bg-opacity-55"
+                      }`}
                 >
                   <div className="flex items-center justify-between p-6">
                     <div>
-                      <h2 className="text-5xl font-bold bg-gradient-to-r bg-[#4793ff] text-transparent bg-clip-text">
+                      <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r bg-[#4793ff] text-transparent bg-clip-text">
                         {weatherData[0].main.temp}°C
                       </h2>
-                      <h3 className="text-[20px] font-normal mt-3 text-start">
+                      <h3 className="text-lg sm:text-[20px] font-normal mt-3 text-start">
                         {new Date().toLocaleDateString("en-US", {
                           weekday: "long",
                         })}
                       </h3>
                     </div>
                     <img
-                      className="w-[150px]"
+                      className="w-[120px] sm:w-[150px]"
                       src={`http://openweathermap.org/img/wn/${weatherData[0].weather[0].icon}@2x.png`}
                       alt="Weather Icon"
                     />
                   </div>
                   <p
-                    className={`text-[25px] font-normal text-start p-6 mt-[-40px] bg-gradient-to-r ${
+                    className={`text-[20px] sm:text-[25px] font-normal text-start p-6 mt-[-40px] bg-gradient-to-r ${
                       darkMode
                         ? "bg-[#fff] text-transparent"
                         : "bg-transparent text-black"
@@ -214,88 +213,86 @@ function App() {
 
             {weatherData.length > 0 && (
               <div>
-                <div>
-                  <div
-                    className={`p-10 bg-white bg-opacity-60 backdrop-blur-md w-[600px] h-[300px] rounded-lg shadow-md 
-                  ${
-                    darkMode
-                      ? "bg-black bg-opacity-80"
-                      : "bg-white bg-opacity-60"
-                  }`}
-                    style={{
-                      backgroundImage: `url(${img})`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "cover",
-                    }}
-                  >
-                    <div className="flex mb-4 gap-12 items-center">
-                      <div className="flex gap-3 items-center">
-                        <div className="text-center mx-auto w-[38px] h-[38px] rounded-full bg-white flex items-center justify-center">
-                          <TepratureIcon />
-                        </div>
-                        <p>Temperature:</p>
+                <div
+                  className={`p-6 sm:p-10 bg-opacity-60 backdrop-blur-md w-full md:w-[600px] h-[300px] rounded-lg shadow-md 
+        ${darkMode ? "bg-black bg-opacity-80" : " bg-white bg-opacity-60"}`}
+                  style={{
+                    backgroundImage: `url(${img})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <div className="flex mb-4 gap-6 sm:gap-12 items-center">
+                    <div className="flex gap-3 items-center">
+                      <div className="text-center mx-auto w-[38px] h-[38px] rounded-full bg-white flex items-center justify-center">
+                        <TepratureIcon />
                       </div>
-                      <p
-                        className={`text-[14px] font-normal bg-gradient-to-r bg-black text-transparent bg-clip-text ${
-                          darkMode ? "text-white" : "text-[#000]"
-                        }`}
-                      >
-                        {weatherData[0].main.temp} °C
-                      </p>
+                      <p>Temperature:</p>
                     </div>
+                    <p
+                      className={`text-[14px] sm:text-[16px] font-normal bg-gradient-to-r bg-black text-transparent bg-clip-text ${
+                        darkMode ? "text-white" : "text-[#000]"
+                      }
+            `}
+                    >
+                      {weatherData[0].main.temp} °C
+                    </p>
+                  </div>
 
-                    <div className="flex mb-4 gap-12 items-center">
-                      <div className="flex gap-3 items-center">
-                        <div className="text-center mx-auto w-[38px] h-[38px] rounded-full bg-white flex items-center justify-center">
-                          <DavlenaIcon />
-                        </div>
-                        <p>Precipitation:</p>
+                  <div className="flex mb-4 gap-6 sm:gap-12 items-center">
+                    <div className="flex gap-3 items-center">
+                      <div className="text-center mx-auto w-[38px] h-[38px] rounded-full bg-white flex items-center justify-center">
+                        <DavlenaIcon />
                       </div>
-                      <p
-                        className={`text-[14px] font-normal bg-black bg-gradient-to- text-transparent bg-clip-text ${
-                          darkMode ? "text-white" : "text-[#000]"
-                        }`}
-                      >
-                        {weatherData[0].rain ? weatherData[0].rain["1h"] : 0} mm
-                      </p>
+                      <p>Precipitation:</p>
                     </div>
+                    <p
+                      className={`text-[14px] sm:text-[16px] font-normal bg-black bg-gradient-to- text-transparent bg-clip-text ${
+                        darkMode ? "text-white" : "text-[#000]"
+                      }
+            `}
+                    >
+                      {weatherData[0].rain ? weatherData[0].rain["1h"] : 0} mm
+                    </p>
+                  </div>
 
-                    <div className="flex mb-4 gap-[75px] items-center">
-                      <div className="flex gap-3 items-center">
-                        <div className="text-center mx-auto w-[38px] h-[38px] rounded-full bg-white flex items-center justify-center">
-                          <SpeenImes />
-                        </div>
-                        <p>Pressure:</p>
+                  <div className="flex mb-4 gap-6 sm:gap-[75px] items-center">
+                    <div className="flex gap-3 items-center">
+                      <div className="text-center mx-auto w-[38px] h-[38px] rounded-full bg-white flex items-center justify-center">
+                        <SpeenImes />
                       </div>
-                      <p
-                        className={`text-[14px] font-normal bg-gradient-to-r bg-black text-transparent bg-clip-text ${
-                          darkMode ? "text-white" : "text-[#000]"
-                        }`}
-                      >
-                        {weatherData[0].main.pressure} hPa
-                      </p>
+                      <p>Pressure:</p>
                     </div>
+                    <p
+                      className={`text-[14px] sm:text-[16px] font-normal bg-gradient-to-r bg-black text-transparent bg-clip-text ${
+                        darkMode ? "text-white" : "text-[#000]"
+                      }
+            `}
+                    >
+                      {weatherData[0].main.pressure} hPa
+                    </p>
+                  </div>
 
-                    <div className="flex ml-[-10px] gap-[95px] items-center">
-                      <div className="flex gap-1 items-center">
-                        <SpeenIcon />
-                        <p>Speed</p>
-                      </div>
-                      <p
-                        className={`text-[14px] font-normal bg-gradient-to-r bg-black text-transparent bg-clip-text ${
-                          darkMode ? "text-white" : "text-[#000]"
-                        }`}
-                      >
-                        {weatherData[0].wind.speed} m/s
-                      </p>
+                  <div className="flex ml-[-10px] gap-[75px] sm:gap-[95px] items-center">
+                    <div className="flex gap-1 items-center">
+                      <SpeenIcon />
+                      <p>Speed</p>
                     </div>
+                    <p
+                      className={`text-[14px] sm:text-[16px] font-normal bg-gradient-to-r bg-black text-transparent bg-clip-text ${
+                        darkMode ? "text-white" : "text-[#000]"
+                      }
+            `}
+                    >
+                      {weatherData[0].wind.speed} m/s
+                    </p>
                   </div>
                 </div>
               </div>
             )}
           </div>
 
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {weatherData.map((weather, index) => (
               <div
                 key={index}
@@ -321,7 +318,7 @@ function App() {
                 <img
                   src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
                   alt="Weather Icon"
-                  className="ml-[-30px]"
+                  className="mx-auto my-4"
                 />
                 <p
                   className={`text-[18px] font-medium ${
